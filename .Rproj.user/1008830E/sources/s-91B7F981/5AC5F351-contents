@@ -1,0 +1,17 @@
+getwd()
+library(devtools)
+library(roxygen2)
+
+document()
+check()
+build_vignettes()
+build_manual(pkg = ".", path = './doc')
+build(vignettes = TRUE, manual = TRUE)
+
+
+library(ISnorm)
+install.packages('../ISnorm_0.0.1.tar.gz',repos = NULL)
+browseVignettes("ISnorm")
+remove.packages('ISnorm')
+devtools::install_github('BioAmelie/ISnorm',build_vignettes=T)
+devtools::install_github("BioAmelie/ISnorm", build_opts = c("--no-resave-data", "--no-manual"),force = T)
